@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strconv"
 )
 
 func ReadLines(path string) (lines []string) {
@@ -22,4 +23,14 @@ func ReadLines(path string) (lines []string) {
 		log.Fatal(err)
 	}
 	return
+}
+
+func ReadIntLines(path string) []int {
+	lines := ReadLines(path)
+	numbers := make([]int, len(lines))
+	for i, line := range lines {
+		atoi, _ := strconv.Atoi(line)
+		numbers[i] = atoi
+	}
+	return numbers
 }
