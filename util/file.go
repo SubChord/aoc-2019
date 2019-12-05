@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func ReadLines(path string) (lines []string) {
@@ -29,8 +30,15 @@ func ReadIntLines(path string) []int {
 	lines := ReadLines(path)
 	numbers := make([]int, len(lines))
 	for i, line := range lines {
-		atoi, _ := strconv.Atoi(line)
+		atoi, err := strconv.Atoi(line)
+		Check(err)
 		numbers[i] = atoi
 	}
 	return numbers
+}
+
+func ReadIntSlice(path string) []int {
+	lines := ReadLines(path)
+	split := StringSlice(strings.Split(lines[0], ","))
+	return split.ToIntSlice()
 }

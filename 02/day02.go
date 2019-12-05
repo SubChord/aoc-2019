@@ -10,10 +10,7 @@ import (
 func main() {
 	lines := util.ReadLines("inp")
 	parts := strings.Split(lines[0], ",")
-	numbers, err := util.StringSlice(parts).ToIntSlice()
-	if err != nil {
-		return
-	}
+	numbers := util.StringSlice(parts).ToIntSlice()
 
 	fmt.Println(part1(append([]int(nil), numbers...)))
 	fmt.Println(part2(append([]int(nil), numbers...)))
